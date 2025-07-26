@@ -1,0 +1,86 @@
+{
+  "info": {
+    "name": "Cloud Management AI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate TFVars",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/generate-tfvars",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "generate-tfvars"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"subscriptionName\": \"sub-dev\",\n  \"environment\": \"dev\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Validate Config",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/validate-config",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "validate-config"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"subscriptionName\": \"sub-dev\",\n  \"tags\": {\n    \"env\": \"dev\"\n  }\n}"
+        }
+      }
+    },
+    {
+      "name": "Summarize Plan",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/summarize-plan",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "summarize-plan"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "Terraform will perform the following actions..."
+        }
+      }
+    }
+  ]
+}

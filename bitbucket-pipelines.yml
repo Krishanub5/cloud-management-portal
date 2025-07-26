@@ -1,0 +1,24 @@
+image: atlassian/default-image:3
+
+pipelines:
+  default:
+    - step:
+        name: "Terraform Plan & Apply"
+        services:
+          - docker
+        size: 2x
+        caches:
+          - terraform
+        script:
+          - apt-get update && apt-get install -y unzip curl
+          - curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+          - az login --service-principal -u $SP_APP_ID -p $SP_SECRET --tenant $SP_TENANT
+          - export ARM_CLIENT_ID=$(az keyvault secret show --vault-name $KEYVAULT_NAME --name ARM-CLIENT-ID --query value -o tsv)
+          - export ARM_CLIENT_SECRET=$(az keyvault secret show --vault-name $KEYVAULT_NAME --name ARM-CLIENT-SECRET --query value -o tsv)
+          - export ARM_SUBSCRIPTION_ID=$(az keyvault secret show --vault-name $KEYVAULT_NAME --name ARM-SUBSCRIPTION-ID --query value -o tsv)
+          - export ARM_TENANT_ID=$SP_TENANT
+          - cd infra
+          - terraform init
+          - terraform apply -auto-approve tfplan
+        artifacts:
+          - infra/tfplan
