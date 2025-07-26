@@ -152,9 +152,6 @@ npm start
 - Dark mode toggle (Tailwind CSS)
 - Flowbite integration for UI components
 
-## Cloud Management Portal UX Preview
-
-![UX Screenshot](docs/cloud_mgmt_portal_ux.png)
 
 ## Environment Variables for Terraform Backend
 ```
