@@ -157,14 +157,15 @@ npm start
 ![UX Screenshot](docs/cloud_mgmt_portal_ux.png)
 
 ## Environment Variables for Terraform Backend
-
-# --- Terraform Backend Configuration (Optional) ---
-# backend "azurerm" {
-#   resource_group_name  = "rg-terraform-backend"
-#   storage_account_name = "tfstatebackendxyz"
-#   container_name       = "tfstate"
-#   key                  = "cloud-portal.terraform.tfstate"
-# }
+```
+--- Terraform Backend Configuration (Optional) ---
+backend "azurerm" {
+   resource_group_name  = "rg-terraform-backend"
+   storage_account_name = "tfstatebackendxyz"
+   container_name       = "tfstate"
+   key                  = "cloud-portal.terraform.tfstate"
+ }
+```
 
 ## Terraform Backend Configuration
 
